@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+<<<<<<< HEAD
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\MangaController;
 use App\Http\Controllers\ChapterController;
@@ -11,10 +12,27 @@ use App\Http\Controllers\GenreController;
 Route::get('/', [MangaController::class, 'index'])->name('home');
 
 // ==================== DASHBOARD ==================== //
+=======
+use App\Http\Controllers\LoginController;
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider and all of them will
+| be assigned to the "web" middleware group. Make something great!
+|
+*/
+
+
+>>>>>>> c63d9cce8f58062895e3d8cdb042b2c024149ba0
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+<<<<<<< HEAD
 // ==================== MANGA ROUTES ==================== //
 Route::prefix('manga')->group(function () {
 
@@ -69,3 +87,14 @@ Route::middleware('auth')->group(function () {
 
 // ==================== AUTH ROUTES ==================== //
 require __DIR__ . '/auth.php';
+=======
+
+Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [LoginController::class, 'login']);
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware('auth');
+
+>>>>>>> c63d9cce8f58062895e3d8cdb042b2c024149ba0
